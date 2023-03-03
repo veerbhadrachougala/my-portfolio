@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', sans-serif;;
+  font-family: "Outfit", sans-serif;
 }
 
 body{
@@ -28,6 +28,7 @@ ul{
   background: aqua;
   color: black;
   border: 1px solid #fff;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -41,6 +42,11 @@ ul{
 
 .btn:hover{
   background: black;
+  color: aqua;
+  transition: 0.3s;
+}
+
+.btn-light:hover{
   color: aqua;
   transition: 0.3s;
 }
