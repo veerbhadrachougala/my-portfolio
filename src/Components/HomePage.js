@@ -12,7 +12,7 @@ const HomePage = () => {
         </div>
           <div className='content'>
               <p>HI, I'M VEERBHADRA CHOUGALA.</p>
-              <h1>Software developer.</h1>
+              <h1>Frontend Developer.</h1>
               <div>
                   <Link to="/Projects" className='btn'>PROJECTS</Link>
                   <Link to="/Contact" className='btn-light'>CONTACT</Link>
