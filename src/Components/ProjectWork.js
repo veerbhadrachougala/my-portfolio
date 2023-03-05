@@ -14,7 +14,8 @@ const ProjectWork = () => {
                 key={index}
                 imgSrc={value.imgSrc}
                 title={value.title}
-                text={value.text}/>
+                text={value.text}
+                view= {value.view}/>
             )
         })}
         
