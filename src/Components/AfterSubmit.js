@@ -14,7 +14,7 @@ const AfterSubmit = () => {
         <h1>Thank you...</h1>
         <div>
           <Link to="/" className="btn-light">
-            Back to Home
+            Back to HomePage
           </Link>
         </div>
       </div>

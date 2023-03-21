@@ -5,6 +5,7 @@ import Home from './Routes/Home';
 import Contact from './Routes/Contact';
 import About from './Routes/About';
 import Projects from './Routes/Projects';
+import AfterSubmit from './Components/AfterSubmit';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path = '/About' element={<About />} />
         <Route path = '/Projects' element={<Projects />} />
         <Route path = '/Contact' element={<Contact />} />
+        <Route path='/submited' element={<AfterSubmit />} />
       </Routes>
     </>
   );

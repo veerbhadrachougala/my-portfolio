@@ -1,4 +1,5 @@
 import './ContactFormStyle.css'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 import React, { useState } from 'react'
@@ -24,6 +25,8 @@ const ContactForm = () => {
     setUser({...user, [name]: value})
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const {name, email, subject, message} = user;
@@ -31,6 +34,8 @@ const ContactForm = () => {
       axios.post("http://localhost:5000/cont", user)
       .then((response) => { console.log(response)  } )
     };
+
+    navigate('/submited')
   };
 
   return (

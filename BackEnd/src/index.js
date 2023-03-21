@@ -18,7 +18,7 @@ const password = process.env.DB_PASSWORD;
 
 
 const URL = `mongodb+srv://${username}:${password}@cluster0.ynr1vhb.mongodb.net/?retryWrites=true&w=majority`;
-mongoose.set('strictQuery',false)
+// mongoose.set('strictQuery',false)
 mongoose.connect(URL, {
     useNewUrlParser : true,
     useUnifiedTopology : true

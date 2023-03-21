@@ -26,24 +26,35 @@ ul{
   font-size: 1rem;
   text-transform: uppercase;
   background: aqua;
+  box-shadow: #094c66 4px 4px 0px;
   color: black;
   border: 1px solid #fff;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 200ms, box-shadow 200ms;
 }
 
 .btn-light{
   padding: 12px 32px;
   font-size: 1rem;
   background: transparent;
+  box-shadow: #094c66 4px 4px 0px;
+  border-radius: 8px;
+  transition: transform 200ms, box-shadow 200ms;
   color: #fff;
   border: 1px solid #fff;
 }
 
-.btn:hover{
+/* .btn:hover{
   background: black;
   color: aqua;
   transition: 0.3s;
+} */
+
+.btn:active {
+  transform: translateY(4px) translate(4px);
+  box-shadow: #094c66 0px 0px 0px ;
 }
 
 .btn-light:hover{
