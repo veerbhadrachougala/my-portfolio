@@ -12,13 +12,38 @@ app.use(cors())
 const port = process.env.PORT || 5000;
 // const port = 'https://localhost:5000/'
 
+// Routes
+
+app.post("/", (request, response) => {
+    const {name, email, subject, message} = request.body
+    console.log(request.body);
+    const user = new User({
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+    })
+    user.save((error) => {
+        if(error){
+            response.send(error)
+        }else{
+            response.send({message: "Thank you for contacting me."})
+        }
+    })
+});
+
+app.listen(port, () => {
+    console.log(`Server is Running succesfully on port ${port}`)
+});
+
+// DataBase------------
+
 dotenv.config();
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
-
 const URL = `mongodb+srv://${username}:${password}@cluster0.ynr1vhb.mongodb.net/?retryWrites=true&w=majority`;
-// mongoose.set('strictQuery',false)
+mongoose.set('strictQuery',false)
 mongoose.connect(URL, {
     useNewUrlParser : true,
     useUnifiedTopology : true
@@ -48,28 +73,3 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = new mongoose.model('User', userSchema)
-
-
-
-// Routes
-
-app.post("/cont", (request, response) => {
-    const {name, email, subject, message} = request.body
-    const user = new User({
-        name: name,
-        email: email,
-        subject: subject,
-        message: message
-    })
-    user.save((error) => {
-        if(error){
-            response.send(error)
-        }else{
-            response.send({message: "Thank you for contacting me."})
-        }
-    })
-});
-
-app.listen(port, () => {
-    console.log(`Server is Running succesfully on port ${port}`)
-});
