@@ -31,7 +31,7 @@ const ContactForm = () => {
     e.preventDefault();
     const {name, email, subject, message} = user;
     if(name && email && subject && message ){
-      axios.post("http://localhost:5000/cont", user)
+      axios.post("http://localhost:5000", user)
       .then((response) => { console.log(response)  } )
     };
 
@@ -42,13 +42,13 @@ const ContactForm = () => {
     <div className='form'>
         <form onSubmit={handleSubmit}>
             <label>Your Name</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange}></input>
+            <input type="text" name="name" value={user.name} onChange={handleChange} required></input>
             <label>Email</label>
-            <input type="email" name="email" value={user.email} onChange={handleChange}></input>
+            <input type="email" name="email" value={user.email} onChange={handleChange} required></input>
             <label>Subject</label>
-            <input type="text" name="subject" value={user.subject} onChange={handleChange}></input>
+            <input type="text" name="subject" value={user.subject} onChange={handleChange} required></input>
             <label>Message</label>
-            <textarea rows="6" name="message" value={user.message} onChange={handleChange} placeholder='Type your message here' />
+            <textarea rows="6" name="message" value={user.message} onChange={handleChange} required placeholder='Type your message here' />
             <button className='btn' type="submit">Submit</button>
         </form> 
     </div>
