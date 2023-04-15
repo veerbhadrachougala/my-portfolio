@@ -1,15 +1,24 @@
 import './HomePageStyle.css';
 import { Link } from 'react-router-dom';
-import React from 'react'
+import React from 'react';
+import '../Photos/veerbhadra-resume.pdf'
 
-const downloadResume = () => {
-  const link = document.createElement('a');
-  link.href = '../Photos/Veerbhadra-Resume.pdf';
-  link.download = 'Veerbhadra-Resume.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+
+// Function will execute on click of button
+const onButtonClick = () => {
+  // using Java Script method to get PDF file
+  fetch('veerbhadra-resume.pdf').then(response => {
+      response.blob().then(blob => {
+          // Creating new object of PDF file
+          const fileURL = window.URL.createObjectURL(blob);
+          // Setting various property values
+          let alink = document.createElement('a');
+          alink.href = fileURL;
+          alink.download = 'veerbhadra-resume.pdf';
+          alink.click();
+      })
+  })
+}
 
 const HomePage = () => {
   return (
@@ -23,7 +32,7 @@ const HomePage = () => {
               <p>HI, I'M VEERBHADRA CHOUGALA.</p>
               <h1>Frontend Developer.</h1>
               <div>
-                  <Link to="/Projects" className='btn' onClick={downloadResume}>Download CV</Link>
+                  <Link className='btn' onClick={onButtonClick}>Download CV</Link>
                   {/* <Link to="/Contact" className='btn-light'>CONTACT</Link> */}
               </div>
           </div>
