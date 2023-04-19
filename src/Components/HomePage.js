@@ -4,6 +4,7 @@ import React from "react";
 
 const PDF_FILE_URL = "http://localhost:3000/veerbhadra-resume.pdf";
 
+// const PDF_FILE_URL = "https://drive.google.com/file/d/13h4bCSzQ1ui6E_inbzCvuUWeGF3MJxK2/view?usp=share_link"
 const HomePage = () => {
   const onButtonClick = () => {
     const link = document.createElement('a');
