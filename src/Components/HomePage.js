@@ -1,44 +1,41 @@
-import './HomePageStyle.css';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import '../Photos/veerbhadra-resume.pdf'
+import "./HomePageStyle.css";
+import { Link } from "react-router-dom";
+import React from "react";
 
-
-// Function will execute on click of button
-const onButtonClick = () => {
-  // using Java Script method to get PDF file
-  fetch('veerbhadra-resume.pdf').then(response => {
-      response.blob().then(blob => {
-          // Creating new object of PDF file
-          const fileURL = window.URL.createObjectURL(blob);
-          // Setting various property values
-          let alink = document.createElement('a');
-          alink.href = fileURL;
-          alink.download = 'veerbhadra-resume.pdf';
-          alink.click();
-      })
-  })
-}
+const PDF_FILE_URL = "http://localhost:3000/veerbhadra-resume.pdf";
 
 const HomePage = () => {
+  const onButtonClick = () => {
+    const link = document.createElement('a');
+    link.href = PDF_FILE_URL;
+    link.download = 'veerbhadra-resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-      <div className='hero'>
-        <div className='mask'>
-          <div className='mask-1'>
-
-          </div>
-        </div>
-          <div className='content'>
-              <p>HI, I'M VEERBHADRA CHOUGALA.</p>
-              <h1>Frontend Developer.</h1>
-              <div>
-                  <Link className='btn' onClick={onButtonClick}>Download CV</Link>
-                  {/* <Link to="/Contact" className='btn-light'>CONTACT</Link> */}
-              </div>
-          </div>
-
+    <div className="hero">
+      <div className="mask">
+        <div className="mask-1"></div>
       </div>
-  )
-}
+      <div className="content">
+        <p>HI, I'M VEERBHADRA CHOUGALA.</p>
+        <h1>Frontend Developer.</h1>
+        <div>
+          <Link className="btn" onClick={onButtonClick}>
+            Download CV
+          </Link>
+          {/* <Link to="/Projects" className="btn-light">
+            PROJECTS
+          </Link>
+          <Link to="/Contact" className="btn-light">
+            CONTACT
+          </Link> */}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default HomePage;
