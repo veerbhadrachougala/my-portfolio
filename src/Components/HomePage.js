@@ -2,17 +2,36 @@ import "./HomePageStyle.css";
 import { Link } from "react-router-dom";
 import React from "react";
 
-const PDF_FILE_URL = "http://localhost:3000/veerbhadra-resume.pdf";
+// const PDF_FILE_URL = "http://localhost:3000/veerbhadra-resume.pdf";
 
 // const PDF_FILE_URL = "https://drive.google.com/file/d/13h4bCSzQ1ui6E_inbzCvuUWeGF3MJxK2/view?usp=share_link"
 const HomePage = () => {
   const onButtonClick = () => {
+    // const link = document.createElement('a');
+    // link.href = PDF_FILE_URL;
+    // link.download = 'veerbhadra-resume.pdf';
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+
+    const url = "https://drive.google.com/file/d/13h4bCSzQ1ui6E_inbzCvuUWeGF3MJxK2/view?usp=share_link";
     const link = document.createElement('a');
-    link.href = PDF_FILE_URL;
-    link.download = 'veerbhadra-resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    fetch(url, {
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then(response => response.blob())
+      .then(blob => {
+        const fileUrl = window.URL.createObjectURL(new Blob([blob]));
+        link.href = fileUrl;
+        link.download = 'veerbhadra-resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
   };
 
   return (
